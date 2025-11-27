@@ -1,0 +1,637 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-size: 16px;
+  --background: #f5f5f5;
+  --foreground: #1a1a1a;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --primary: #000000;
+  --primary-foreground: #ffffff;
+  --secondary: #f5f5f5;
+  --secondary-foreground: #1a1a1a;
+  --muted: #f9f9f9;
+  --muted-foreground: #6b7280;
+  --accent: #ef4444;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --border: #e5e7eb;
+  --input: #ffffff;
+  --input-background: #ffffff;
+  --switch-background: #e5e7eb;
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --ring: #000000;
+  --radius: 12px;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1a1a1a;
+  --sidebar-primary: #000000;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f3f4f6;
+  --sidebar-accent-foreground: #1a1a1a;
+  --sidebar-border: #e5e7eb;
+  --sidebar-ring: #000000;
+  
+  /* Couleurs spécifiques Qwonen */
+  --qwonen-black: #000000;
+  --qwonen-red: #ef4444;
+  --qwonen-white: #ffffff;
+  --qwonen-gray-light: #f5f5f5;
+  --qwonen-gray-medium: #9ca3af;
+  --qwonen-gray-dark: #374151;
+}
+
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ffffff;
+  --card: #1a1a1a;
+  --card-foreground: #ffffff;
+  --popover: #1a1a1a;
+  --popover-foreground: #ffffff;
+  --primary: #ffffff;
+  --primary-foreground: #0a0a0a;
+  --secondary: #262626;
+  --secondary-foreground: #ffffff;
+  --muted: #171717;
+  --muted-foreground: #a3a3a3;
+  --accent: #ef4444;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --border: #333333;
+  --input: #1a1a1a;
+  --ring: #ffffff;
+  --sidebar: #0a0a0a;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #ffffff;
+  --sidebar-primary-foreground: #0a0a0a;
+  --sidebar-accent: #262626;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #333333;
+  --sidebar-ring: #ffffff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  
+  /* Classes utilitaires Qwonen */
+  --color-qwonen-black: var(--qwonen-black);
+  --color-qwonen-red: var(--qwonen-red);
+  --color-qwonen-white: var(--qwonen-white);
+  --color-qwonen-gray-light: var(--qwonen-gray-light);
+  --color-qwonen-gray-medium: var(--qwonen-gray-medium);
+  --color-qwonen-gray-dark: var(--qwonen-gray-dark);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-size: 2rem;
+      font-weight: var(--font-weight-bold);
+      line-height: 1.3;
+      letter-spacing: -0.025em;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      font-weight: var(--font-weight-semibold);
+      line-height: 1.3;
+      letter-spacing: -0.025em;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+      font-weight: var(--font-weight-semibold);
+      line-height: 1.4;
+      letter-spacing: -0.015em;
+    }
+
+    h4 {
+      font-size: 1.125rem;
+      font-weight: var(--font-weight-medium);
+      line-height: 1.4;
+    }
+
+    p {
+      font-size: 1rem;
+      font-weight: var(--font-weight-normal);
+      line-height: 1.6;
+    }
+
+    label {
+      font-size: 0.875rem;
+      font-weight: var(--font-weight-medium);
+      line-height: 1.4;
+    }
+
+    button {
+      font-size: 1rem;
+      font-weight: var(--font-weight-medium);
+      line-height: 1.4;
+      letter-spacing: -0.005em;
+    }
+
+    input, textarea {
+      font-size: 1rem;
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+@layer components {
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .glass-effect {
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  .dark .glass-effect {
+    background: rgba(26, 26, 26, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Styles spécifiques Qwonen */
+  .qwonen-button-primary {
+    @apply bg-primary hover:bg-primary/90 text-primary-foreground font-medium transition-colors duration-200;
+  }
+
+  .qwonen-button-secondary {
+    @apply bg-secondary hover:bg-secondary/90 text-secondary-foreground border border-border font-medium transition-colors duration-200;
+  }
+
+  .qwonen-button-accent {
+    @apply bg-accent hover:bg-accent/90 text-accent-foreground font-medium transition-colors duration-200;
+  }
+
+  .qwonen-input {
+    @apply bg-input border border-border focus:border-ring focus:ring-1 focus:ring-ring transition-colors duration-200;
+  }
+
+  .qwonen-card {
+    @apply bg-card border border-border shadow-sm;
+  }
+
+  .qwonen-shadow {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  }
+
+  .qwonen-shadow-lg {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  /* États de focus améliorés pour l'accessibilité */
+  .qwonen-focus {
+    @apply focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background;
+  }
+  
+  .qwonen-focus-red {
+    @apply focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background;
+  }
+
+  /* Support pour les lecteurs d'écran */
+  .sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+
+  /* Amélioration d'accessibilité pour les dialogs */
+  [data-slot="dialog-content"]:not([aria-describedby]) {
+    /* Auto-correction appliquée via JavaScript */
+  }
+
+  [data-slot="dialog-description"].sr-only {
+    /* Description accessible cachée visuellement */
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Animations spécifiques à Qwonen */
+@keyframes qwonen-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes qwonen-bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes qwonen-logo-glow {
+  0%, 100% {
+    text-shadow: 0 0 5px rgba(239, 68, 68, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 10px rgba(239, 68, 68, 0.6), 0 0 15px rgba(239, 68, 68, 0.3);
+  }
+}
+
+@keyframes qwonen-car-move {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(1px);
+  }
+  75% {
+    transform: translateX(-1px);
+  }
+}
+
+@keyframes qwonen-network-pulse {
+  0%, 100% {
+    background-color: #ef4444;
+  }
+  50% {
+    background-color: #dc2626;
+  }
+}
+
+@keyframes qwonen-slide-down {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes qwonen-fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.qwonen-pulse {
+  animation: qwonen-pulse 2s infinite;
+}
+
+.qwonen-bounce {
+  animation: qwonen-bounce 1s infinite;
+}
+
+.qwonen-logo-glow {
+  animation: qwonen-logo-glow 3s ease-in-out infinite;
+}
+
+.qwonen-car-move {
+  animation: qwonen-car-move 2s ease-in-out infinite;
+}
+
+.qwonen-network-pulse {
+  animation: qwonen-network-pulse 1.5s ease-in-out infinite;
+}
+
+.qwonen-slide-down {
+  animation: qwonen-slide-down 0.3s ease-out;
+}
+
+.qwonen-fade-out {
+  animation: qwonen-fade-out 0.2s ease-in forwards;
+}
+
+/* Optimisations pour Google Maps */
+.google-maps-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.google-maps-container iframe {
+  border-radius: inherit;
+}
+
+/* Amélioration des performances pour les cartes */
+.map-loading {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Classes utilitaires pour la gestion réseau */
+.network-offline {
+  filter: grayscale(0.5);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.network-online {
+  filter: none;
+  opacity: 1;
+  pointer-events: auto;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+/* Performance optimizations */
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  img, video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  button, input, optgroup, select, textarea {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0;
+  }
+
+  /* Scrollbar custom pour une meilleure expérience */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground));
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--foreground));
+  }
+}
+
+/* Media queries pour la responsivité */
+@media (max-width: 640px) {
+  html {
+    font-size: 14px;
+  }
+  
+  .qwonen-mobile-padding {
+    @apply px-4;
+  }
+}
+
+@media (min-width: 768px) {
+  .qwonen-desktop-padding {
+    @apply px-6;
+  }
+}
+
+/* Préférences utilisateur pour l'accessibilité */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Garder les animations essentielles pour l'UX */
+  .animate-pulse,
+  .animate-spin {
+    animation: none !important;
+  }
+
+  .animate-pulse {
+    opacity: 0.8;
+  }
+}
+
+/* Amélioration du contraste en mode sombre */
+@media (prefers-color-scheme: dark) {
+  .qwonen-auto-dark {
+    --qwonen-black: #ffffff;
+    --qwonen-white: #000000;
+    --qwonen-gray-light: #1f2937;
+    --qwonen-gray-medium: #6b7280;
+    --qwonen-gray-dark: #d1d5db;
+  }
+}
+
+/* Classes utilitaires pour le thème */
+.theme-transition {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+/* Améliorations pour les grandes tailles de police */
+@media (prefers-font-size: large) {
+  html {
+    font-size: 18px;
+  }
+}
+
+/* Styles pour les composants de développement/test */
+.dev-section {
+  @apply border-l-4 border-blue-500 bg-blue-50 rounded-r-lg;
+}
+
+.dev-test-pass {
+  @apply bg-green-50 border-green-200 text-green-800;
+}
+
+.dev-test-fail {
+  @apply bg-red-50 border-red-200 text-red-800;
+}
+
+.dev-test-warning {
+  @apply bg-orange-50 border-orange-200 text-orange-800;
+}
+
+/* Animation pour les résultats de tests */
+@keyframes test-result-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.test-result {
+  animation: test-result-fade-in 0.3s ease-out;
+}
+
+/* Badges de status spéciaux */
+.status-badge-success {
+  @apply bg-green-100 text-green-800 border-green-300;
+}
+
+.status-badge-error {
+  @apply bg-red-100 text-red-800 border-red-300;
+}
+
+.status-badge-warning {
+  @apply bg-orange-100 text-orange-800 border-orange-300;
+}
+
+.status-badge-info {
+  @apply bg-blue-100 text-blue-800 border-blue-300;
+}
+
+/* Styles pour l'impression */
+@media print {
+  .qwonen-no-print {
+    display: none !important;
+  }
+
+  .qwonen-print-only {
+    display: block !important;
+  }
+
+  * {
+    background: transparent !important;
+    color: black !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+}
